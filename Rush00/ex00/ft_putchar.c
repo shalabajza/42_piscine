@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmarinko <dmarinko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: psimcak <psimcak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 17:55:17 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/08 17:55:43 by dmarinko         ###   ########.fr       */
+/*   Created: 2023/06/11 11:43:37 by psimcak           #+#    #+#             */
+/*   Updated: 2023/06/11 11:44:03 by psimcak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,3 @@ void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
-
-/*
-int	main(void)
-{
-	ft_putchar('a');
-	return (0);
-}
-*/

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush01.c                                           :+:      :+:    :+:   */
+/*   rush03.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psimcak <psimcak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:06:54 by psimcak           #+#    #+#             */
-/*   Updated: 2023/06/11 17:11:57 by psimcak          ###   ########.fr       */
+/*   Updated: 2023/06/11 17:14:12 by psimcak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putchar(char c);
 
-void	rush01(int x, int y)
+void	rush03(int x, int y)
 {
 	int		i;
 	int		j;
@@ -25,16 +25,14 @@ void	rush01(int x, int y)
 		j = -1;
 		while (j++ < x)
 		{
-			if (j == 0 && i == 0)
-				ft_putchar('/');
-			else if ((j == (x - 1) && i == (y - 1)) && (x != 1 && y != 1))
-				ft_putchar('/');
-			else if ((j == (x - 1) && i == 0) || (j == 0 && i == (y - 1)))
-				ft_putchar('\\');
+			if ((j == 0 && i == 0) || (j == 0 && i == (y - 1)))
+				ft_putchar('A');
+			else if ((j == (x - 1) && i == 0) || (j == (x - 1) && i == (y - 1)))
+				ft_putchar('C');
 			else if ((j > 0) && (j < (x - 1)) && ((i == 0) || (i == (y - 1))))
-				ft_putchar('*');
+				ft_putchar('B');
 			else if (((i > 0) && (i < (y - 1))) && ((j == 0) || (j == (x - 1))))
-				ft_putchar('*');
+				ft_putchar('B');
 			else
 				ft_putchar(' ');
 		}
