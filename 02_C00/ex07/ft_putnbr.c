@@ -1,48 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmarinko <dmarinko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 18:31:36 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/08 19:00:03 by dmarinko         ###   ########.fr       */
+/*   Created: 2023/06/10 19:25:53 by dmarinko          #+#    #+#             */
+/*   Updated: 2023/06/10 20:13:08 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_comb(void)
+void	modprint(int nb)
 {
-	char	c1;
-	char	c2;
-	char	c3;
+	char	c;	
+	
+	if (nb == 0)
+		return ;
+	c = nb % 10 + '0';
+	nb /= 10;
+	modprint(nb);
+	write(1, &c, 1);
+}
 
-	c1 = '0';
-	while (c1 <= '9')
+void	ft_putnbr(int nb)
+{
+	if (nb < 0)
 	{
-		c2 = c1 + 1;
-		while (c2 <= '9')
-		{
-			c3 = c2 + 1;
-			while (c3 <= '9')
-			{
-				write(1, &c1, 1);
-				write(1, &c2, 1);
-				write(1, &c3, 1);
-				write(1, ", ", 2);
-				c3++;
-			}
-			c2++;
-		}
-		c1++;
+		write(1, "-", 1);
+		nb *= -1;
 	}
+	else if (nb == 0)
+		write(1, '0', 1);
+	else modprint(nb);
 }
 
 /*
 int	main(void)
 {
-	ft_print_comb ();
+	int	a;
+	a = 123456;
+	ft_putnbr(a);
 	return (0);
 }
 */

@@ -6,7 +6,7 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:35:41 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/12 15:43:53 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:07:53 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	main(int argc, char *argv[])
 	}
 	else if (argc == 2)
 	{
-		num1 = string_to_int(argv[1]);
-		num2 = num1;
+		num2 = string_to_int(argv[1]);
+		num1 = num2 * 2;
 	}
 	else
 	{
