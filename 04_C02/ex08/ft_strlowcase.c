@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/11 18:22:21 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/13 14:36:40 by dmarinko         ###   ########.fr       */
+/*   Created: 2023/06/13 16:40:39 by dmarinko          #+#    #+#             */
+/*   Updated: 2023/06/13 16:43:50 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strlowcase(char *str)
 {
-	unsigned int	i;
+	int i;
 
 	i = 0;
-	while (i < n && src[i])
+	while (str[i])
 	{
-		dest[i] = src[i];
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] = str[i] + 32;
 		++i;
 	}
-	while (i < n)
-		dest[i++] = 0;
-	return (dest);
+	return (str);
 }
