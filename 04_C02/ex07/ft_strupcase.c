@@ -6,13 +6,13 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:38:50 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/13 16:42:18 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/14 13:41:04 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strupcase(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
