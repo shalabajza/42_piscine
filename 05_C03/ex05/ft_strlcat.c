@@ -6,7 +6,7 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:01:00 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/15 13:21:10 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:18:47 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	return (i);
 }
 
-/*
+
 #include <stdio.h>
 #include <string.h>
 
 int main(void)
 {
-	char dest1[20] = "Hello";
-	char dest2[20] = "Hello";
-	char src[] = " world!";
-	unsigned int size = sizeof(dest1);
+	char dest1[20] = "";
+	char dest2[20] = "";
+	char src[] = "abc";
+	unsigned int size = 100;
 
 	// Using ft_strlcat
 	unsigned int ft_result = ft_strlcat(dest1, src, size);
@@ -60,4 +60,3 @@ int main(void)
 
 	return 0;
 }
-*/

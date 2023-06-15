@@ -6,7 +6,7 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:35:33 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/15 13:20:35 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:16:02 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,21 @@ char	*ft_strstr(char *str, char *to_find)
 	return (0);
 }
 
-/*
+
 int	main(void)
 {
-	char	string[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
-	char	string2[] = "vas";
-	char	*nr;
+	char	str1[] = "ab";
+	char	str2[] = "dfghdfhfgab123";
+	char	str3[] = "dfghdfhfgab123";
+	char	*nr2;
+	char	*nr3;
 	
-	nr = ft_strstr(&string, &string2);
-	printf("%s\n\n", string);
+	nr2 = strstr(str2, str1);
+	nr3 = ft_strstr(str3, str1);
+	printf("%s\n", str2);
+	printf("%s\n\n", str3);
 	
-	printf("%s\n\n", nr);
+	printf("%s\n", nr2);
+	printf("%s\n", nr3);
 	return (0);
 }
-*/
