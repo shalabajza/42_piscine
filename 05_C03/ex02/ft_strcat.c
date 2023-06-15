@@ -6,28 +6,26 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:52:56 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/15 14:56:56 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:35:28 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcat(char *dest, char *src)
 {
-	char	*ptr;
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	ptr = dest;
-	while (ptr[i])
+	while (dest[i])
 		i++;
 	while (src[j])
 	{
-		ptr[i] = src[j];
+		dest[i] = src[j];
 		i++;
 		j++;
 	}
-	ptr[i] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
 

@@ -6,12 +6,9 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 15:24:18 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/15 15:23:37 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:36:48 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <string.h>
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -26,6 +23,9 @@ int	ft_strcmp(char *s1, char *s2)
 }
 
 /*
+#include <stdio.h>
+#include <string.h>
+
 int	main()
 {
 	char	str1[] = "gdfgdfgd";

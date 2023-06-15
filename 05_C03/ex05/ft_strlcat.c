@@ -6,7 +6,7 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:01:00 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/15 14:18:47 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:30:09 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	return (i);
 }
 
-
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -60,3 +60,4 @@ int main(void)
 
 	return 0;
 }
+*/

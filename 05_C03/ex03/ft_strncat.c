@@ -6,28 +6,26 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:09:58 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/15 15:33:14 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:37:35 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	char		*ptr;
-	int	i;
-	int	j;
-
+	unsigned int	i;
+	unsigned int	j;
+	
 	i = 0;
 	j = 0;
-	ptr = dest;
-	while (ptr[i++] && i < nb);
-	i--;
-	while (src[j] && i < nb)
+	while (dest[i])
+		i++;
+	while (src[j] && j < nb)
 	{
-		ptr[i] = src[j];
+		dest[i] = src[j];
 		i++;
 		j++;
 	}
-	ptr[i] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -39,6 +37,7 @@ int	main()
 	char	str3[20] = "123";
 	int	n = 20;
 
+	printf("%s\n", strncat(str2, str1, n));
 	printf("%s\n", ft_strncat(str3, str1, n));
 }
 */
