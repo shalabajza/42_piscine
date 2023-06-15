@@ -6,7 +6,7 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:41:45 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/14 14:29:58 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:25:47 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,3 @@ char	*ft_strcapitalize(char *str)
 	}
 	return (str);
 }
-
-/*
-int	main(void)
-{
-	char	string[] = "saluUUUUt, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
-	printf("%s\n\n", string);
-	printf("%s", ft_strcapitalize(string));
-	return (0);
-}
-*/
