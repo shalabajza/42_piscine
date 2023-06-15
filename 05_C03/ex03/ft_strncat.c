@@ -6,37 +6,39 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:09:58 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/15 14:12:11 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:33:14 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	char			*ptr;
-	unsigned int	i;
+	char		*ptr;
+	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	ptr = dest;
-	while (ptr[i] && i < nb)
-		i++;
-	while (*src && i < nb)
+	while (ptr[i++] && i < nb);
+	i--;
+	while (src[j] && i < nb)
 	{
-		*ptr = *src;
-		++src;
-		++ptr;
-		++i;
+		ptr[i] = src[j];
+		i++;
+		j++;
 	}
-	*ptr = 0;
+	ptr[i] = '\0';
 	return (dest);
 }
 
+/*
 int	main()
 {
-	char	str1[] = "abc";
-	char	str2[] = "123";
-	char	str3[] = "123";
-	int	n = 10;
+	char	str1[20] = "abc";
+	char	str2[20] = "123";
+	char	str3[20] = "123";
+	int	n = 20;
 
-	printf("%s\n", strncat(str2, str1, n));
 	printf("%s\n", ft_strncat(str3, str1, n));
 }
+*/
