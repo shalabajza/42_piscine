@@ -15,7 +15,7 @@
 void	modprint(int nb)
 {
 	char	c;	
-	
+
 	if (nb == 0)
 		return ;
 	c = nb % 10 + '0';
@@ -33,7 +33,8 @@ void	ft_putnbr(int nb)
 	}
 	else if (nb == 0)
 		write(1, '0', 1);
-	else modprint(nb);
+	else
+		modprint(nb);
 }
 
 /*
