@@ -6,8 +6,18 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:25:08 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/15 13:28:07 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:16:25 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (*(str + i) != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
