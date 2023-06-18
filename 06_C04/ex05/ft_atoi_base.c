@@ -6,7 +6,7 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 13:26:25 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/16 12:03:05 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/18 15:09:06 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ int	ft_atoi_base_error(char *base)
 				return (0);
 			j++;
 		}
-		if (base[i] == ' ' || base[i] == '\f' || base[i] == '\n' ||
-				base[i] == '\r' || base[i] == '\t' || base[i] == '\v' ||
-				base[i] == '-' || base[i] == '+')
+		if (base[i] == ' ' || base[i] == '\f' || base[i] == '\n'
+			|| base[i] == '\r' || base[i] == '\t' || base[i] == '\v'
+			|| base[i] == '-' || base[i] == '+')
 			return (0);
 		i++;
 	}
 	return (i);
 }
 
-int		ft_atoi_base_test(char str, char *base)
+int	ft_atoi_base_test(char str, char *base)
 {
-	int retour;
-	int i;
+	int	retour;
+	int	i;
 
 	retour = 0;
 	i = 0;
@@ -50,13 +50,13 @@ int		ft_atoi_base_test(char str, char *base)
 	return (-1);
 }
 
-int		ft_atoi_base_search(char *str, int *i)
+int	ft_atoi_base_search(char *str, int *i)
 {
-	int mult;
+	int	mult;
 
 	mult = 1;
-	while (str[*i] == ' ' || str[*i] == '\f' || str[*i] == '\n' ||
-		str[*i] == '\r' || str[*i] == '\t' || str[*i] == '\v')
+	while (str[*i] == ' ' || str[*i] == '\f' || str[*i] == '\n'
+		|| str[*i] == '\r' || str[*i] == '\t' || str[*i] == '\v')
 		*i += 1;
 	while (str[*i] == '-' || str[*i] == '+')
 	{
@@ -67,7 +67,7 @@ int		ft_atoi_base_search(char *str, int *i)
 	return (mult);
 }
 
-int		ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int		i;
 	int		mult;
