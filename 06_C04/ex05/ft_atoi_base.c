@@ -18,7 +18,7 @@ int	ft_atoi_base_error(char *base)
 	i = 0;
 	while (base[i])
 	{
-		j = 0;
+		j = i + 1;
 		while (base[j])
 		{
 			if (base[i] == base[j] && i != j)
