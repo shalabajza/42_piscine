@@ -92,6 +92,7 @@ int	main(int argc, char *argv[])
 	int		nbr;
 	char	*base;
 
+	argc = 0;
 	nbr = ft_string_to_int(argv[1]);
 	base = argv[2];
 	ft_putnbr_base(nbr, base);

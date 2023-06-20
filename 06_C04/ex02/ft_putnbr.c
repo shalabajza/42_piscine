@@ -25,8 +25,6 @@ void	rec(int nb)
 
 void	ft_putnbr(int nb)
 {
-	char	c;
-
 	if (nb < 0)
 	{
 		write(1, "-", 1);
