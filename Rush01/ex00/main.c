@@ -6,170 +6,55 @@
 /*   By: ljiriste <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 14:53:09 by ljiriste          #+#    #+#             */
-/*   Updated: 2023/06/17 19:33:30 by ljiriste         ###   ########.fr       */
+/*   Updated: 2023/06/18 22:07:24 by ljiriste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include "utilities.h"
+#include "limits_check.h"
+#include "permutation.h"
+#include "game_state.h"
 
-void	fill_border(int borders[4][4], char *str)
+int	complementary_check(struct s_game_state state)
 {
+	int	*subarray;
 	int	i;
-	int	j;
+	int	up_b;
+	int	down_b;
 
 	i = 0;
-	while (i < 4)
+	subarray = malloc(state.n * sizeof(int));
+	while (i < state.n)
 	{
-		j = 0;
-		while (j < 4)
-		{
-			borders[i][j] = *str - '0';
-			str += 2;
-			++j;
-		}
-		++i;
-	}
-	return ;
-}
-
-void	empty_board(int board[4][4])
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			board[i][j] = 0;
-			++j;
-		}
-		++i;
-	}
-	return ;
-}
-
-int	limits_check(int array[4], int start, int end)
-{
-	int	max;
-	int	count;
-	int	i;
-
-	i = 0;
-	max = 0;
-	count = 0;
-	while (i < 4)
-	{
-		if (array[i] > max)
-		{
-			max = array[i];
-			++count;
-		}
-		++i;
-	}
-	if (count != start)
-		return (0);
-	max = 0;
-	count = 0;
-	i = 3;
-	while (i >= 0)
-	{
-		if (array[i] > max)
-		{
-			max = array[i];
-			++count;
-		}
-		--i;
-	}
-	if (count != end)
-		return (0);
-	return (1);
-}
-
-// Returns 0 if the array has differing elements from row in table
-// also returns 0 if it would make a number repeating in a column
-// Otherwise the array can be placed in table, and this function returns 1
-int	placeable_in_row(int array[4], int row, int table[4][4])
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (array[i] != table[row][i] && table[row][i] != 0)
+		copy_column(subarray, state, i);
+		up_b = state.borders[0 * state.n + i];
+		down_b = state.borders[1 * state.n + i];
+		if (!limits_check(subarray, up_b, down_b, state.n))
 			return (0);
-		j = 0;
-		while (j < 4)
-		{
-			if (array[i] == table[j][i] && j != row)
-				return (0);
-			++j;
-		}
 		++i;
 	}
 	return (1);
 }
-	
-void	write_row(int board[4][4], int array[4], int row)
-{
-	int	i;
 
-	i = 0;
-	while (i < 4)
-	{
-		board[row][i] = array[i];
-		++i;
-	}
-	return ;
-}
-
-int	solve_row(int board[4][4], int row, int left, int right)
-{
-	int perms[24][4] = {{1, 2, 3, 4}, {1, 2, 4, 3}, {1, 3, 2, 4}, {1, 3, 4, 2}, {1, 4, 3, 2},
-					{1, 4, 2, 3}, {2, 1, 3, 4}, {2, 1, 4, 3}, {2, 3, 1, 4}, {2, 3, 4, 1},
-					{2, 4, 3, 1}, {2, 4, 1, 3}, {3, 2, 1, 4}, {3, 2, 4, 1}, {3, 1, 2, 4},
-					{3, 1, 4, 2}, {3, 4, 1, 2}, {3, 4, 2, 1}, {4, 2, 3, 1}, {4, 2, 1, 3},
-					{4, 3, 2, 1}, {4, 3, 1, 2}, {4, 1, 3, 2}, {4, 1, 2, 3}};
-	int	i;
-	int	valid_count;
-	int	valid_index;
-
-	i = 0;
-	valid_count = 0;
-	while (i < 24)
-	{
-		if (limits_check(perms[i], left, right) && placeable_in_row(perms[i], row, board))
-		{
-			++valid_count;
-			valid_index = i;
-		}
-		++i;
-	}
-	if (valid_count == 1)
-	{
-		write_row(board, perms[valid_index], row);
-		return (1);
-	}
-	return (0);
-}
-
-int	placeable_in_column(int array[4], int column, int table[4][4])
+int	partial_check(struct s_game_state state, int row)
 {
 	int	i;
 	int	j;
+	int	left_b;
+	int	right_b;
 
+	left_b = state.borders[2 * state.n + row];
+	right_b = state.borders[3 * state.n + row];
+	if (!limits_check(&state.board[row * state.n], left_b, right_b, state.n))
+		return (0);
 	i = 0;
-	while (i < 4)
+	while (i < state.n)
 	{
-		if (array[i] != table[i][column] && table[i][column] != 0)
-			return (0);
 		j = 0;
-		while (j < 4)
+		while (j < row)
 		{
-			if (array[i] == table[i][j] && j != column)
+			if (state.board[j * state.n + i] == state.board[row * state.n + i])
 				return (0);
 			++j;
 		}
@@ -177,150 +62,58 @@ int	placeable_in_column(int array[4], int column, int table[4][4])
 	}
 	return (1);
 }
-	
-void	write_column(int board[4][4], int array[4], int column)
+
+int	solve(struct s_game_state state, int row)
 {
-	int	i;
+	struct s_perm	perm;
+	int				cond;
 
-	i = 0;
-	while (i < 4)
-	{
-		board[i][column] = array[i];
-		++i;
-	}
-	return ;
-}
-
-int solve_column(int board[4][4], int column, int up, int down)
-{
-	int perms[24][4] = {{1, 2, 3, 4}, {1, 2, 4, 3}, {1, 3, 2, 4}, {1, 3, 4, 2}, {1, 4, 3, 2},
-					{1, 4, 2, 3}, {2, 1, 3, 4}, {2, 1, 4, 3}, {2, 3, 1, 4}, {2, 3, 4, 1},
-					{2, 4, 3, 1}, {2, 4, 1, 3}, {3, 2, 1, 4}, {3, 2, 4, 1}, {3, 1, 2, 4},
-					{3, 1, 4, 2}, {3, 4, 1, 2}, {3, 4, 2, 1}, {4, 2, 3, 1}, {4, 2, 1, 3},
-					{4, 3, 2, 1}, {4, 3, 1, 2}, {4, 1, 3, 2}, {4, 1, 2, 3}};
-	int	i;
-	int	valid_count;
-	int	valid_index;
-
-	i = 0;
-	valid_count = 0;
-	while (i < 24)
-	{
-		if (limits_check(perms[i], up, down) && placeable_in_column(perms[i], column, board))
-		{
-			++valid_count;
-			valid_index = i;
-		}
-		++i;
-	}
-	if (valid_count == 1)
-	{
-		write_column(board, perms[valid_index], column);
+	if (complementary_check(state))
 		return (1);
-	}
-	return (0);
-}
-
-int	is_full(int board[4][4])
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			if (board[i][j] == 0)
-				return (0);
-			++j;
-		}
-	++i;
-	}
-	return (1);
-}
-
-int	solve(int board[4][4], int borders[4][4])
-{
-	int	i;
-	int cond;
-
+	else if (row == state.n)
+		return (0);
+	perm = create_first_perm(state.n);
 	cond = 1;
-	while (cond && !is_full(board))
+	while (cond)
 	{
-		cond = 0;
-		i = 0;
-		while (i < 4)
+		input_perm(state, perm, row);
+		if (partial_check(state, row))
 		{
-			cond += solve_row(board, i, borders[2][i], borders[3][i]);
-			++i;
+			if (solve(state, row + 1))
+			{
+				free_perm(perm);
+				return (1);
+			}
 		}
-		i = 0;
-		while (i < 4)
-		{
-			cond += solve_column(board, i, borders[0][i], borders[1][i]);
-			++i;
-		}
+		remove_perm(state, row);
+		cond = advance_perm(perm);
 	}
-	if (cond != 0)
-		return (1);
+	free_perm(perm);
 	return (0);
 }
 
-void	write_error(char *str)
-{
-	while (*str)
-		write(2, str++, 1);
-	return ;
-}
-
-void	print_board(int board[4][4])
-{
-	int		i;
-	int		j;
-	char	digit;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			digit = '0' + board[i][j];
-			write(1, &digit, 1);
-			if (j != 3)
-				write(1, " ", 1);
-			++j;
-		}
-		write(1, "\n", 1);
-		++i;
-	}
-	return ;
-}
-
-/*	borders first index legend
- *	i	meaning
- *	0	up
- *	1	down
- *	2	left
- *	3	right
- */
 int	main(int args, char **argv)
 {
-	int borders[4][4];
-	int	board[4][4];
+	struct s_game_state	state;
 
-	if (args != 2)
+	if (args == 3)
+		state.n = simple_atoi(argv[2]);
+	else if (args == 2)
+		state.n = 4;
+	state.borders = create_borders(argv[1], state.n);
+	state.board = create_empty_board(state.n);
+	if (!state.borders || !state.board)
 	{
-		write_error("Invalid number of arguments, there should only be 1!\n");
+		write_error();
+		free(state.borders);
+		free(state.board);
 		return (0);
 	}
-	fill_border(borders, argv[1]);
-	empty_board(board);
-	if (solve(board, borders))
-		print_board(board);
+	if (solve(state, 0))
+		print_board(state);
 	else
-		write_error("No solution found!\n");
+		write_error();
+	free(state.board);
+	free(state.borders);
 	return (0);
 }
