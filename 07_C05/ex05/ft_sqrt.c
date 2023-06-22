@@ -27,17 +27,15 @@ int	ft_sqrt(int nb)
 	return (ft_sqrt_recur(nb, 0));
 }
 
+/*
 int	main(void)
 {
 	clock_t start, end;
-    	/* Store time before function call */
     	start = clock();
     	printf("%d IS THE SQUARE ROOT OF UR NR\n\n", ft_sqrt(2147483600));
-   	/* Store time after function call */
    	end = clock();
-   	/* Get the time taken by program to execute in seconds */
    	double duration = ((double)end - start)/CLOCKS_PER_SEC;
-     
    	printf("Time taken to execute in seconds : %f", duration);
     	return 0;
 }
+*/
