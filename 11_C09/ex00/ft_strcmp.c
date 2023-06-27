@@ -1,12 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 14:44:09 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/22 14:44:10 by dmarinko         ###   ########.fr       */
+/*   Created: 2023/06/14 15:24:18 by dmarinko          #+#    #+#             */
+/*   Updated: 2023/06/15 18:17:20 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int	ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		++s1;
+		++s2;
+	}
+	return (*s1 - *s2);
+}
+
+/*
+int	main()
+{
+	char	str1[] = "gdfgdfgd";
+	char	str2[] = "dgdgdfsfs";
+
+	printf("%d\n", strcmp(str1, str2));
+	printf("%d\n", ft_strcmp(str1, str2));
+}
+*/
