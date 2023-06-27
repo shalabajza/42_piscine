@@ -6,7 +6,13 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:45:19 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/22 14:45:20 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/24 20:00:55 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_ABS_H
+# define FT_ABS_H
+
+# define ABS(n) (n * ((n < 0) ? -1 : 1 ))
+
+#endif
