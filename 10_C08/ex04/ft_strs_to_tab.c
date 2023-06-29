@@ -6,18 +6,11 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 18:52:00 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/27 21:03:40 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:46:31 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-typedef struct s_stock_str
-{
-	int		size;
-	char	*str;
-	char	*copy;
-}	t_stock_str;
+#include "ft_stock_str.h"
 
 int	ft_strlen(char *str)
 {

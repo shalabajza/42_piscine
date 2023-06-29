@@ -1,22 +1,29 @@
-LNAME = libft.a
-SRCS = srcs/ft_putchar.c \
-		srcs/ft_putstr.c \
-		srcs/ft_strlen.c \
-		srcs/ft_strcmp.c \
-		srcs/ft_swap.c
-INCL = -I includes
-OBJECTS = ${SRCS:.c=.o}
-COMPILE	= cc
-REMOVE	= rm -f
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
+AR = ar
 
-.c.o:
-		${COMPILE} ${CFLAGS} ${INCL} -c $< -o ${<:.c=.o}
-${LNAME}: ${OBJECTS}
-		ar rcs ${LNAME} ${OBJECTS}
-all: ${LNAME}
-clean:
-		${REMOVE} ${OBJECTS}
-fclean:	clean
-		${REMOVE} ${LNAME}
-re:		fclean all
+RM = rm -f
+
+INCDIR = ./includes
+SRCDIR = ./srcs
+SOURCES = $(addprefix $(SRCDIR)/, ft_putchar.c ft_putstr.c ft_strcmp.c ft_strlen.c ft_swap.c)
+OBJECTS = $(SOURCES:.c=.o)
+
+NAME = libft.a
+
+all : $(NAME)
+
+$(NAME) : $(OBJECTS)
+	$(AR) rcs $(NAME) $(OBJECTS)
+
+%.o : %.c
+	$(CC) $(CFLAGS) -o $@ -c $< -I $(INCDIR)
+
+clean :
+	$(RM) $(OBJECTS)
+
+fclean : clean 
+	$(RM) $(NAME)
+
+re : fclean
+	$(MAKE) all

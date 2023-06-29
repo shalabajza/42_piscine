@@ -6,18 +6,11 @@
 /*   By: dmarinko <dmarinko@student.42prague.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:45:50 by dmarinko          #+#    #+#             */
-/*   Updated: 2023/06/27 21:02:52 by dmarinko         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:45:23 by dmarinko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-typedef struct s_stock_str
-{
-	int		size;
-	char	*str;
-	char	*copy;
-}	t_stock_str;
+#include "ft_stock_str.h"
 
 void	ft_putchar(char c)
 {
